@@ -6,7 +6,15 @@ TODO
 		how does group by work?
 
 	add colors
+		better color scale for metors (need more yellow/red?); thresholds?
+		histogram colors?
+
+	correct scale for right histogram
+		max g?
 		
+
+
+	add zoom		
 
 	make titles bold
 

@@ -160,14 +160,16 @@ function ready(error, topology, csv, pics){
 			tooltip.transition().duration(700).style("opacity", 0);
 		});
 
-	lb = 1.5;
+	lb = 1.36;
 	metorsCF = crossfilter(metors),
 		all = metorsCF.groupAll(),
 		year = metorsCF.dimension(function(d){return d.year;}),
 		years = year.group(function(d){return Math.floor(d/10)*10;}),
 		mass = metorsCF.dimension(function(d){return d.mass}),
 		masses = mass.group(function(d){ 
-			return Math.pow(lb, Math.floor(Math.log(d)/Math.log(lb)));}),
+			var rv = Math.pow(lb, Math.floor(Math.log(d)/Math.log(lb)))
+			if (true){console.log(d);}
+			return rv;}),
 		type = metorsCF.dimension(function(d){return d.type_of_meteorite;}),
 		types = type.group();
 
@@ -186,7 +188,7 @@ function ready(error, topology, csv, pics){
 				.dimension(mass)
 				.group(masses)
 			.x(d3.scale.log().base([lb])
-				.domain([1,24000000])
+				.domain([1,25000001])
 				.rangeRound([0,20*24]))
 	];
 

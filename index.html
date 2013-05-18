@@ -66,12 +66,28 @@ var proj = d3.geo.mercator()
 		.scale(180)
 		.rotate([-10,0]);
 
-var svg = d3.select("#map").append("svg")
-		.attr("width", width)
-		.attr("height", height);
-
 var path = d3.geo.path()
 		.projection(proj);
+
+var zoom = d3.behavior.zoom()
+    .translate(proj.translate())
+    .scale(proj.scale())
+    .scaleExtent([height*.33, 4 * height])
+    .on("zoom", zoom);
+
+
+var svg = d3.select("#map").append("svg")
+		.attr("width", width)
+		.attr("height", height)
+		.call(zoom);
+
+function zoom() {
+	proj.translate(d3.event.translate).scale(d3.event.scale);
+	svg.selectAll("path").attr("d", path);
+	circles
+  		.attr("cx", function(d){return proj([d.long, d.lat])[0];})
+		.attr("cy", function(d){return proj([d.long, d.lat])[1];});
+}
 
 var borders = svg.append("g");
 
@@ -122,7 +138,7 @@ function ready(error, topology, csv, pics){
 	metors.sort(function(a, b){return a.id - b.id;})
 
 	metorScale
-		.range([2, 3, 4, 5, 10]);
+		.range([2.5, 3, 4, 5, 10]);
 
 	colorScale
 		.range(["#FFFF66", "#FFFF00", "#E68000", "#D94000", "#CC0000"]);
@@ -160,7 +176,7 @@ function ready(error, topology, csv, pics){
 			tooltip.transition().duration(700).style("opacity", 0);
 		});
 
-	lb = 1.36;
+	lb = 1.370;
 	metorsCF = crossfilter(metors),
 		all = metorsCF.groupAll(),
 		year = metorsCF.dimension(function(d){return d.year;}),
@@ -168,7 +184,6 @@ function ready(error, topology, csv, pics){
 		mass = metorsCF.dimension(function(d){return d.mass}),
 		masses = mass.group(function(d){ 
 			var rv = Math.pow(lb, Math.floor(Math.log(d)/Math.log(lb)))
-			if (true){console.log(d);}
 			return rv;}),
 		type = metorsCF.dimension(function(d){return d.type_of_meteorite;}),
 		types = type.group();

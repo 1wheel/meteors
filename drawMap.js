@@ -201,8 +201,8 @@ var printDetails = [
 function updateDetails(metor){
 	var image = new Image();
 	image.onload = function(){
-		document.getElementById("tooltipImg").src = 'metors/' + metor.name + '.jpg';}
-	image.src = 'metors/' + metor.name + '.jpg';
+		document.getElementById("tooltipImg").src = 'pics/' + metor.name + '.jpg';}
+	image.src = 'pics/' + metor.name + '.jpg';
 
 	tooltip.selectAll("div").remove();
 	tooltip.selectAll("div").data(printDetails).enter()

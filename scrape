@@ -1,3 +1,0 @@
-import urllib                                       
-url = "http://www.lpi.usra.edu/meteor/get_original_photo.php?recno=5652267"
-

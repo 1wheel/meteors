@@ -56,6 +56,8 @@ function barChart() {
             .attr("transform", "translate(0," + height + ")")
             .call(axis);
 
+        t = g;
+
         // Initialize the brush component with pretty resize handles.
         var gBrush = g.append("g").attr("class", "brush").call(brush);
         gBrush.selectAll("rect").attr("height", height);
@@ -149,10 +151,20 @@ function barChart() {
   chart.x = function(_) {
     if (!arguments.length) return x;
     x = _;
-    axis.scale(x);
+    if (x.domain()[1] < 3000){
+      //format years differently than mass
+      axis.scale(x).ticks(10).tickFormat(d3.format(""));
+    }
+    else{
+      axis.scale(x).tickValues([1, 10, 100, 1000, 10000, 100000, 1000000, 10000000]).tickFormat(d3.format(","));
+    }
     brush.x(x);
     return chart;
   };
+
+  function logFormat(d){
+    return "" + ((d <= 10000000) ? d : d.toExponential())
+  }
 
   chart.y = function(_) {
     if (!arguments.length) return y;

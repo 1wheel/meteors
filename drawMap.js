@@ -105,6 +105,7 @@ function ready(error, topology, csv, pics){
 			    .style("top", (d3.event.pageY - 5) + "px")
 			    .transition().duration(300)
 			    .style("opacity", 1)
+			    .style("display", "block")
 
 			updateDetails(d);
 			})
@@ -172,7 +173,6 @@ function ready(error, topology, csv, pics){
 		filterArray.forEach(function(d, i){
 			if (d.value != lastFilterArray[i]){
 				lastFilterArray[i] = d.value;
-				console.log("#id" + d.key);
 				d3.select("#id" + d.key).transition().duration(500)
 						.attr("r", d.value == 1 ? 2*metorScale(metors[i].mass) : 0)
 					.transition().delay(550).duration(500)

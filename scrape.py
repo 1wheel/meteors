@@ -20,7 +20,7 @@ def parseImage(name):
 	size = 200,200
 	i.thumbnail(size, Image.ANTIALIAS)
 	if i.mode != "RGB":
-			i = i.convert("RGB")
+		i = i.convert("RGB")
 	i.save("pics/" + name, "JPEG")
 
 for name in os.listdir(directory):
@@ -30,9 +30,16 @@ for name in os.listdir(directory):
 		pass
 
 with open('metors.json') as data_file:    
-    metors = json.load(data_file)
+	metors = json.load(data_file)
 
-downloaded = os.listdir(directory)
+downloaded = os.listdir('pics/')
+for meteor in metors:
+	if meteor['name'] + '.jpg' in downloaded:
+		try:
+			i = Image.open('pics/' + meteor['name'] + '.jpg')
+			i.save('pictures/' + meteor['cartodb_id'] + ".jpg")
+		except Exception, e:
+			print meteor['name']
 
 for metor in metors:
 	if not metor['name'] +'.jpg' in downloaded:

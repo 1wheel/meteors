@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="filter.css" />
+<body>
+	<span>
+		<h1>500 Years of Witnessed Meteors</h1>
+		<span id="instructions">
+			Mouseover and click map for details. Click and drag histograms to crossfilter.
+		</span>
+	</span>
+	<div id="charts">
+		<div id="map" class="display"></div>
+
+		<div id="year-chart" class="chart display">
+			<div class="title">Year of Impact</div>
+		</div>
+
+		<div id="mass-chart" class="chart display">
+			<div class="title">Mass (g)</div>
+		</div>
+	</div>
+
+	<div id="about">
+		<div id="links">
+			<span id="active"></span> pictures from the <a class = "blacklink" href="http://www.encyclopedia-of-meteorites.com/">Encyclopedia of Meteorites</a>	
+			|			
+			Data from the <a class= "blacklink" href="http://meteoriticalsociety.org/">
+				Meteoritical Society</a>
+		 	
+		</div>
+			<a class= "blacklink" href="http://www.roadtolarissa.com/meteor-map">
+				about</a> |
+		 	<a class = "blacklink" href="http://www.roadtolarissa.com">
+		 		blog</a> | 
+		 	<a class= "blacklink" href="https://github.com/1wheel/meteors">
+		 		github</a>
+		<div>
+
+</body>
+
+<script src="lib/d3.js"></script>
+<script src="lib/topojson.js"></script>
+<script src="lib/queue.js"></script>
+<script src="lib/crossfilter.js"></script>
+<script src="barChart.js"></script>
+<script src="drawMap.js"></script>
+
+</html>

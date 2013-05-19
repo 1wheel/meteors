@@ -2,7 +2,7 @@
 body {
   font-family: "Verdana";
   margin: 0px auto;
-  width: 1100px;
+  width: 1020px;
 }
 
 #body {
@@ -15,9 +15,15 @@ footer {
 }
 
 h1 {
-  font-size: 96px;
+  font-size: 24px;
   margin-top: .3em;
   margin-bottom: 0;
+  display: inline-block;
+}
+
+#instructions{
+  font-size: 90%;
+  margin-left: 50px;
 }
 
 h1 + h2 {
@@ -40,14 +46,64 @@ h1, h2 {
   text-rendering: optimizeLegibility;
 }
 
+path {
+  stroke: black;
+  stroke-width: 0.15px;
+  fill: #fafafa;
+}
+
+div.tooltip {
+  position: absolute;
+  width: 200px;
+  padding: 8px;
+  font: 12px sans-serif;
+  background: #fff;
+  border: solid 1px #aaa;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.boldDetail{
+  font-weight: bold;
+}
+
+.normalDetail{
+  font-weight: normal;
+}
+
 #charts {
   padding: 10px 0;
+}
+
+#about{
+  text-align: center;
+  font-size: 90%;
+}
+
+#links{
+  margin-left: 70px;
+  margin-bottom: 10px;
+}
+
+.blacklink{ 
+  color:black;
 }
 
 .chart {
   display: inline-block;
   height: 151px;
   margin-bottom: 20px;
+}
+
+#map{
+  border-bottom: solid 1px #aaa;
+  border-top: solid 1px #aaa;
+  height: 500px;
+  overflow: hidden;
+}
+
+#mass-chart{
+  border-left: solid 1px #aaa;
 }
 
 .reset {
@@ -58,6 +114,12 @@ h1, h2 {
 
 .background.bar {
   fill: #ccc;
+}
+
+.title{
+  text-align: left;
+  margin-left: 40px;
+  font-weight: bold;
 }
 
 #year-chart .foreground.bar {

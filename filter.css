@@ -81,7 +81,8 @@ div.tooltip {
 }
 
 #links{
-  margin-left: 70px;
+  text-align: right;
+  margin-right: 267px;
   margin-bottom: 10px;
 }
 
@@ -124,16 +125,16 @@ div.tooltip {
 }
 
 #year-chart .foreground.bar {
-  fill: #FFFF00;
+  fill: #ff7f0e;
 }
 
 #mass-chart .foreground.bar {
-  fill: #CC0000;
+  fill:  #d62728;
 }
 
 .bar{
   stroke:black;
-  stroke-width: .1; 
+  stroke-width: .3; 
 }
 
 .axis path, .axis line {

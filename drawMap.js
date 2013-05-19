@@ -138,7 +138,7 @@ function ready(error, topology, csv, pics){
 				.group(years)
 			.x(d3.scale.linear()
 				.domain([1490,2020])
-				.rangeRound([-1, 20*24])),
+				.rangeRound([-1, 20*24-5])),
 
 		barChart()
 				.dimension(mass)
@@ -166,7 +166,7 @@ function ready(error, topology, csv, pics){
 		lastFilterArray[i] = 1;
 	});
 
-		function renderAll(){
+	function renderAll(){
 		chart.each(render);
 
 		var filterArray = cartoDbIds.all();
@@ -191,6 +191,7 @@ function ready(error, topology, csv, pics){
 
 	renderAll();
 }
+
 
 var printDetails = [
 					{'var': 'name', 'print': 'Name'},

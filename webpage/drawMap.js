@@ -35,7 +35,7 @@ var impacts = svg.append("g");
 
 var metorScale = d3.scale.pow().exponent(.5).domain([0, 1000, 10000, 56000, 23000000]);
 
-var colorScale = d3.scale.pow().exponent(1).domain([0, 1000, 10000, 56000, 23000000]);
+var colorScale = d3.scale.linear().domain([1400, 1800, 1860, 1940, 2015]);
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -93,7 +93,7 @@ function ready(error, topology, csv, pics){
 				.attr("cy", function(d){return proj([d.long, d.lat])[1];})
 				.attr("r", 	function(d){return metorScale(d.mass);})
 				.attr("id", function(d){return "id" + d.id;})
-				.style("fill", function(d){return colorScale(d.mass);	})
+				.style("fill", function(d){return colorScale(d.year);	})
 		.on("mouseover", function(d){
 			d3.select(this)
 				.attr("stroke", "black")
